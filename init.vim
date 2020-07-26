@@ -1,4 +1,4 @@
-" https://github.com/erkrnt/awesome-streamerrc/blob/master/ThePrimeagen/init.vim"
+ "https://github.com/erkrnt/awesome-streamerrc/blob/master/ThePrimeagen/init.vim"
 
 
 syntax on
@@ -18,6 +18,7 @@ set noswapfile
 set incsearch
 "add no highlight to search
 
+"sets pythonv version?
 set pyxversion=3
 
 set colorcolumn=80
@@ -71,7 +72,8 @@ inoremap jk <ESC>
 "Y yanks full line"
 nnoremap Y y$
 
-nnoremap <leader>pw :Rg <C-R>=expand("<cwords>"<CR><CR>
+"huh?
+"nnoremap <leader>pw :Rg <C-R>=expand("<cwords>"<CR><CR>
 nnoremap <leader>u :UndotreeShow<CR>
 
 "prevent arrow keys, rec'd to keep up and bc mouse wheel
@@ -91,6 +93,7 @@ nmap <silent> <leader>gn <Plug>(coc-diagnostic-next-error)
 nnoremap <leader>cr :CocRestart
 
 map <C-n> :NERDTreeToggle<CR>
+let g:NERDTreeWinSize=24
 
 "Vimwiki no thingy
 "inoremap <leader>now <CR><ESC>!!date<CR>A*<ESC>kJxA<CR><CR>

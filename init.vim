@@ -49,6 +49,8 @@ Plug 'sheerun/vim-polyglot'
 Plug 'vim-python/python-syntax'
 Plug 'ap/vim-css-color'
 Plug 'vimwiki/vimwiki'
+"Plug 'markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 
+                            \ 'for': ['markdown', 'vim-plug']}
 
 call plug#end()
 
@@ -72,6 +74,10 @@ nnoremap Y y$
 nnoremap <leader>pw :Rg <C-R>=expand("<cwords>"<CR><CR>
 nnoremap <leader>u :UndotreeShow<CR>
 
+"prevent arrow keys, rec'd to keep up and bc mouse wheel
+map <left> <nop>
+map <right> <nop>
+
 " GoTo code navigation.
 nmap <leader>gd <Plug>(coc-definition)
 nmap <leader>gy <Plug>(coc-type-definition)
@@ -85,6 +91,11 @@ nmap <silent> <leader>gn <Plug>(coc-diagnostic-next-error)
 nnoremap <leader>cr :CocRestart
 
 map <C-n> :NERDTreeToggle<CR>
+
+"Vimwiki no thingy
+"inoremap <leader>now <CR><ESC>!!date<CR>A*<ESC>kJxA<CR><CR>
+let g:vimwiki_list = [{'path': '~/vimwiki/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
 
 "map <leader>ww 
 let g:netrw_browse_split=2

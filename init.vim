@@ -1,7 +1,13 @@
  "https://github.com/erkrnt/awesome-streamerrc/blob/master/ThePrimeagen/init.vim"
 
+"add fuzzy search :find *
+set path+=**
 
 syntax on
+filetype plugin on
+
+"Display all matching files when we tab complete
+set wildmenu
 
 set noerrorbells
 set tabstop=4 softtabstop=4
@@ -42,7 +48,7 @@ Plug 'junegunn/fzf', {'do': {-> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'gruvbox-community/gruvbox'
 Plug 'sainnhe/gruvbox-material'
-Plug 'ThePrimeagen/vim-be-good', {'do': 'install.sh'}
+Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
 Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -51,7 +57,8 @@ Plug 'vim-python/python-syntax'
 Plug 'ap/vim-css-color'
 Plug 'vimwiki/vimwiki'
 "Plug 'markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 
-                            \ 'for': ['markdown', 'vim-plug']}
+"                            \ 'for': ['markdown', 'vim-plug']}
+Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
 
 call plug#end()
 
@@ -105,6 +112,12 @@ let g:netrw_browse_split=2
 let g:netrw_banner=0
 let g:netrw_winsize=25
 
+"tab navigation
+nnoremap tn :tabnew<Space>
+nnoremap tk :tabnext<CR>
+nnoremap tj :tabprev<CR>
+nnoremap th :tabfirst<CR>
+nnoremap tk :tablast<CR>
 let g:ctrlp_use_caching=0
 
 "pyhton syntax highlighing vim-polyglot"
@@ -116,3 +129,13 @@ let g:airline#extensions#tabline#enabled = 1
 
 "g:applescript_config.run.output.buffer_name"
 "g:applescript_config.run.output.open_command"
+"
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Vim-Instant-Markdown
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:instant_markdown_autostart = 0         " Turns off auto preview
+"let g:instant_markdown_browser = "chrome"      " Uses surf for preview
+"let g:instant_markdown_browser = "chrome --new-window"
+map <Leader>md :InstantMarkdownPreview<CR>   " Previews .md file
+map <Leader>ms :InstantMarkdownStop<CR>      " Kills the preview
+

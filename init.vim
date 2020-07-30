@@ -54,7 +54,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'sheerun/vim-polyglot'                       "necessary with built ins?
-Plug 'vim-python/python-syntax''                  "necessary with built ins?
+Plug 'vim-python/python-syntax'                   "necessary with built ins?
 Plug 'ap/vim-css-color'
 Plug 'vimwiki/vimwiki'
 Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
@@ -90,6 +90,7 @@ let mapleader = " "
 
 "use jk to exit insert mode"
 inoremap jk <ESC>
+"nnoremap sop :source %<CR>
 
 "Y yanks full line"
 nnoremap Y y$
@@ -107,7 +108,7 @@ nnoremap tn :tabnew<Space>
 nnoremap tk :tabnext<CR>
 nnoremap tj :tabprev<CR>
 nnoremap th :tabfirst<CR>
-nnoremap tk :tablast<CR>
+nnoremap tl :tablast<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => COC
@@ -167,4 +168,9 @@ let g:instant_markdown_autostart = 0         " Turns off auto preview
 "let g:instant_markdown_browser = "chrome --new-window"
 map <Leader>md :InstantMarkdownPreview<CR>   " Previews .md file
 map <Leader>ms :InstantMarkdownStop<CR>      " Kills the preview
+
+"python shortcuts until I learn how to do it with built in?
+inoremap <C-_> if __name__ == '__main__':<CR>main()<CR><ESC>
+inoremap j;j #!/usr/bin/python3<CR>
+
 

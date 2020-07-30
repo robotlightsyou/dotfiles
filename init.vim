@@ -173,4 +173,8 @@ map <Leader>ms :InstantMarkdownStop<CR>      " Kills the preview
 inoremap <C-_> if __name__ == '__main__':<CR>main()<CR><ESC>
 inoremap j;j #!/usr/bin/python3<CR>
 
+nnoremap <LEADER>d 0O'''<CR>DOCSTRING:<CR>'''<ESC>kA
+
+
+
 

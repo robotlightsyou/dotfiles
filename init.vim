@@ -175,6 +175,8 @@ inoremap j;j #!/usr/bin/python3<CR>
 
 nnoremap <LEADER>d 0O'''<CR>DOCSTRING:<CR>'''<ESC>kA
 
+nnoremap <Leader>h <C-w>h
+nnoremap <Leader>l <C-w>l
 
-
-
+inoremap <C-a> #@TODO:<SPACE>
+    

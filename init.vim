@@ -1,5 +1,6 @@
 "WIP, don't judge
 
+let g:python_host_provider = '/usr/local/lib/python3.8'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vim native settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -28,7 +29,6 @@ set noswapfile
 set incsearch
 set nohlsearch "add no highlight to search
 
-set pyxversion=3 "sets pythonv version?
 
 set colorcolumn=80
 highlight ColorColumn ctermbg=0 guibg=lightgrey
@@ -61,7 +61,7 @@ Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
 "Plug 'lyuts/vim-rtags'
 "Plug 'markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 
 "                            \ 'for': ['markdown', 'vim-plug']}
-"Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
+Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
 
 call plug#end()
 
@@ -110,20 +110,22 @@ nnoremap tj :tabprev<CR>
 nnoremap th :tabfirst<CR>
 nnoremap tl :tablast<CR>
 
+"set pyxversion=3 "sets pythonv version?
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => COC
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+source $HOME/.config/nvim/plug-config/coc.vim
 " GoTo code navigation.
-nmap <leader>gd <Plug>(coc-definition)
-nmap <leader>gy <Plug>(coc-type-definition)
-nmap <leader>gi <Plug>(coc-implementation)
-nmap <leader>gr <Plug>(coc-references)
-nmap <leader>rr <Plug>(coc-rename)
-nmap <leader>g[ <Plug>(coc-diagnostic-prev)
-nmap <leader>g] <Plug>(coc-diagnostic-next)
-nmap <silent> <leader>gp <Plug>(coc-diagnostic-prev-error)
-nmap <silent> <leader>gn <Plug>(coc-diagnostic-next-error)
-nnoremap <leader>cr :CocRestart
+"nmap <leader>gd <Plug>(coc-definition)
+"nmap <leader>gy <Plug>(coc-type-definition)
+"nmap <leader>gi <Plug>(coc-implementation)
+"nmap <leader>gr <Plug>(coc-references)
+"nmap <leader>rr <Plug>(coc-rename)
+"nmap <leader>g[ <Plug>(coc-diagnostic-prev)
+"nmap <leader>g] <Plug>(coc-diagnostic-next)
+"nmap <silent> <leader>gp <Plug>(coc-diagnostic-prev-error)
+"nmap <silent> <leader>gn <Plug>(coc-diagnostic-next-error)
+"nnoremap <leader>cr :CocRestart
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Nerdtree
@@ -179,4 +181,13 @@ nnoremap <Leader>h <C-w>h
 nnoremap <Leader>l <C-w>l
 
 inoremap <C-a> #@TODO:<SPACE>
-    
+ " when scrolling, keep cursor 3 lines away from screen border
+set scrolloff=3   
+
+" Enable folder icons
+let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+let g:DevIconsEnableFoldersOpenClose = 1
+
+" Fix directory colors
+highlight! link NERDTreeFlags NERDTreeDir
+

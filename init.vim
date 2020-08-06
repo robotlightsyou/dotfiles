@@ -1,12 +1,8 @@
 "WIP, don't judge
 
-let g:python_host_provider = '/usr/local/lib/python3.8'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vim native settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"add fuzzy search :find *
-set path+=**
 
 syntax on
 filetype plugin on
@@ -26,12 +22,11 @@ set number relativenumber
 set nowrap
 set smartcase "affects searching
 set noswapfile
-set incsearch
+set incsearch  "displays search results dynamically while typed"
 set nohlsearch "add no highlight to search
 
-
-set colorcolumn=80
-highlight ColorColumn ctermbg=0 guibg=lightgrey
+"add fuzzy search :find *
+set path+=**
 
 "give more space for displaying messages 
 set cmdheight=2
@@ -58,22 +53,27 @@ Plug 'vim-python/python-syntax'                   "necessary with built ins?
 Plug 'ap/vim-css-color'
 Plug 'vimwiki/vimwiki'
 Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
-"Plug 'lyuts/vim-rtags'
-"Plug 'markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 
-"                            \ 'for': ['markdown', 'vim-plug']}
+Plug 'tpope/vim-commentary'
 Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
+Plug 'puremourning/vimspector'
+"Plug 'lyuts/vim-rtags'
 
 call plug#end()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colorschemes
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:airline_solarized_bg='dark'
-let g:airline_theme='dark'
-let g:airline#extensions#tabline#enabled = 1
+"general colors, font, background
 colorscheme gruvbox
 set background=dark
+"strip and tab colors
+let g:airline_solarized_bg='dark'
+let g:airline_theme='dark'
 "airline colored tabs
+let g:airline#extensions#tabline#enabled = 1
+"vim built in width designator
+set colorcolumn=75
+highlight ColorColumn ctermbg=3 guibg=orange
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => RG
@@ -110,28 +110,30 @@ nnoremap tj :tabprev<CR>
 nnoremap th :tabfirst<CR>
 nnoremap tl :tablast<CR>
 
-"set pyxversion=3 "sets pythonv version?
+set pyxversion=3 "sets pythonv version?
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => COC
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"coc keybinds found in coc config
 source $HOME/.config/nvim/plug-config/coc.vim
-" GoTo code navigation.
-"nmap <leader>gd <Plug>(coc-definition)
-"nmap <leader>gy <Plug>(coc-type-definition)
-"nmap <leader>gi <Plug>(coc-implementation)
-"nmap <leader>gr <Plug>(coc-references)
-"nmap <leader>rr <Plug>(coc-rename)
-"nmap <leader>g[ <Plug>(coc-diagnostic-prev)
-"nmap <leader>g] <Plug>(coc-diagnostic-next)
-"nmap <silent> <leader>gp <Plug>(coc-diagnostic-prev-error)
-"nmap <silent> <leader>gn <Plug>(coc-diagnostic-next-error)
-"nnoremap <leader>cr :CocRestart
+ " GoTo code navigation.
+nmap <leader>gd <Plug>(coc-definition)
+nmap <leader>gy <Plug>(coc-type-definition)
+nmap <leader>gi <Plug>(coc-implementation)
+nmap <leader>gr <Plug>(coc-references)
+nmap <leader>rr <Plug>(coc-rename)
+nmap <leader>g[ <Plug>(coc-diagnostic-prev)
+nmap <leader>g] <Plug>(coc-diagnostic-next)
+nmap <silent> <leader>gp <Plug>(coc-diagnostic-prev-error)
+nmap <silent> <leader>gn <Plug>(coc-diagnostic-next-error)
+nnoremap <leader>cr :CocRestart
+let g:python_host_provider = '/usr/local/lib/python3.8'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Nerdtree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <C-n> :NERDTreeToggle<CR>
-let g:NERDTreeWinSize=24
+" map <C-n> :NERDTreeToggle<CR>
+" let g:NERDTreeWinSize=24
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vimwiki
@@ -147,8 +149,6 @@ let g:vimwiki_list = [{'path': '~/vimwiki/',
 let g:netrw_browse_split=2
 let g:netrw_banner=0
 let g:netrw_winsize=25
-
-"let g:ctrlp_use_caching=0
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Python
@@ -172,16 +172,28 @@ map <Leader>md :InstantMarkdownPreview<CR>   " Previews .md file
 map <Leader>ms :InstantMarkdownStop<CR>      " Kills the preview
 
 "python shortcuts until I learn how to do it with built in?
+"python shortcuts
 inoremap <C-_> if __name__ == '__main__':<CR>main()<CR><ESC>
 inoremap j;j #!/usr/bin/python3<CR>
-
+inoremap <C-a> #@TODO:<SPACE>
 nnoremap <LEADER>d 0O'''<CR>DOCSTRING:<CR><BACKSPACE>Input:<CR><BACKSPaCE>Output:<CR><BACKSPACE>'''<ESC>kkkA<SPACE>
 
+nnoremap <Leader>j <C-w>j
+nnoremap <Leader>k <C-w>k
 nnoremap <Leader>h <C-w>h
 nnoremap <Leader>l <C-w>l
+nnoremap <C-n> :Ex<CR>
 
-inoremap <C-a> #@TODO:<SPACE>
- " when scrolling, keep cursor 3 lines away from screen border
+"toggle relative numbers with leader + #
+nnoremap <silent><expr> <leader>#
+      \ ":set "
+      \ .(&relativenumber ? "norelativenumber number" : "relativenumber number")
+      \ ."<CR>"
+
+" make alt b and alt n shuffle buffers?
+
+
+" when scrolling, keep cursor 3 lines away from screen border
 set scrolloff=3   
 
 " Enable folder icons
@@ -189,5 +201,5 @@ let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 let g:DevIconsEnableFoldersOpenClose = 1
 
 " Fix directory colors
-highlight! link NERDTreeFlags NERDTreeDir
+" highlight! link NERDTreeFlags NERDTreeDir
 

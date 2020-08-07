@@ -24,11 +24,12 @@ set smartcase "affects searching
 set noswapfile
 set incsearch  "displays search results dynamically while typed"
 set nohlsearch "add no highlight to search
+" set termguicolors
 
 "add fuzzy search :find *
 set path+=**
 
-"give more space for displaying messages 
+"give more space for displaying messages
 set cmdheight=2
 
 "shorten update time to avoid errors/improve experience
@@ -194,7 +195,7 @@ nnoremap <silent><expr> <leader>#
 
 
 " when scrolling, keep cursor 3 lines away from screen border
-set scrolloff=3   
+set scrolloff=3
 
 " Enable folder icons
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1
@@ -203,3 +204,16 @@ let g:DevIconsEnableFoldersOpenClose = 1
 " Fix directory colors
 " highlight! link NERDTreeFlags NERDTreeDir
 
+"primeagen autocmds -- only work if you build nvim with lua?
+fun! TrimWhiteSpace()
+    let l:save = winsaveview()
+    keeppatterns %s/\s\+$//e
+    call winrestview(l:save)
+endfun
+
+augroup highlight_yank
+    autocmd!
+    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
+augroup end
+
+autocmd BufWritePre * :call TrimWhiteSpace()

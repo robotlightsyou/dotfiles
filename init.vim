@@ -24,7 +24,6 @@ set smartcase "affects searching
 set noswapfile
 set incsearch  "displays search results dynamically while typed"
 set nohlsearch "add no highlight to search
-" set termguicolors
 
 "add fuzzy search :find *
 set path+=**
@@ -67,6 +66,7 @@ call plug#end()
 "general colors, font, background
 colorscheme gruvbox
 set background=dark
+
 "strip and tab colors
 let g:airline_solarized_bg='dark'
 let g:airline_theme='dark'
@@ -75,6 +75,7 @@ let g:airline#extensions#tabline#enabled = 1
 "vim built in width designator
 set colorcolumn=75
 highlight ColorColumn ctermbg=3 guibg=orange
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => RG
@@ -177,7 +178,7 @@ map <Leader>ms :InstantMarkdownStop<CR>      " Kills the preview
 inoremap <C-_> if __name__ == '__main__':<CR>main()<CR><ESC>
 inoremap j;j #!/usr/bin/python3<CR>
 inoremap <C-a> #@TODO:<SPACE>
-nnoremap <LEADER>d 0O'''<CR>DOCSTRING:<CR><BACKSPACE>Input:<CR><BACKSPaCE>Output:<CR><BACKSPACE>'''<ESC>kkkA<SPACE>
+nnoremap <LEADER>d 0O'''<CR><CR><CR>Input:<CR><BACKSPACE>Output:<CR><BACKSPACE>'''<ESC>kkkkA
 
 nnoremap <Leader>j <C-w>j
 nnoremap <Leader>k <C-w>k
@@ -185,11 +186,11 @@ nnoremap <Leader>h <C-w>h
 nnoremap <Leader>l <C-w>l
 nnoremap <C-n> :Ex<CR>
 
-"toggle relative numbers with leader + #
-nnoremap <silent><expr> <leader>#
-      \ ":set "
-      \ .(&relativenumber ? "norelativenumber number" : "relativenumber number")
-      \ ."<CR>"
+""toggle relative numbers with leader + #
+"nnoremap <silent><expr> <leader>#
+"      \ ":set "
+"      \ .(&relativenumber ? "norelativenumber number" : "relativenumber number")
+"      \ ."<CR>"
 
 " make alt b and alt n shuffle buffers?
 
@@ -203,17 +204,3 @@ let g:DevIconsEnableFoldersOpenClose = 1
 
 " Fix directory colors
 " highlight! link NERDTreeFlags NERDTreeDir
-
-"primeagen autocmds -- only work if you build nvim with lua?
-fun! TrimWhiteSpace()
-    let l:save = winsaveview()
-    keeppatterns %s/\s\+$//e
-    call winrestview(l:save)
-endfun
-
-augroup highlight_yank
-    autocmd!
-    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank()
-augroup end
-
-autocmd BufWritePre * :call TrimWhiteSpace()

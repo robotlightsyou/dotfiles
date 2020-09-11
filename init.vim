@@ -57,6 +57,7 @@ Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
 Plug 'tpope/vim-commentary'
 Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
 Plug 'puremourning/vimspector'
+Plug 'junegunn/vim-peekaboo'
 "Plug 'lyuts/vim-rtags'
 
 call plug#end()

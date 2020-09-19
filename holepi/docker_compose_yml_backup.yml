@@ -1,0 +1,50 @@
+version: "3"
+
+# More info at https://github.com/pi-hole/docker-pi-hole/ and https://docs.pi-hole.net/
+services:
+  pihole:
+    container_name: pihole
+    hostname: holepi
+    image: pihole/pihole:latest
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "67:67/udp"
+      - "80:80/tcp"
+      - "443:443/tcp"
+    # hostname:
+    #   - pi.hole
+    environment:
+      TZ: 'America/Los_Angeles'
+      WEBPASSWORD: 'password' # 'set a secure password here or it will be random'
+    # Volumes store your data between container upgrades
+    volumes:
+      - './etc-pihole/:/etc/pihole/'
+      - './etc-dnsmasq.d/:/etc/dnsmasq.d/'
+    # Recommended but not required (DHCP needs NET_ADMIN)
+    #   https://github.com/pi-hole/docker-pi-hole#note-on-capabilities
+    cap_add:
+      - NET_ADMIN
+    restart: unless-stopped
+
+  portainer:
+    container_name: portainer
+    image: portainer/portainer
+    volumes:
+      - portainer_data:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: always
+    ports:
+      - "9000:9000"
+  hass:
+    container_name: hass
+    image: homeassistant/home-assistant
+    volumes:
+      - ~/.config/hass_config:/config
+      - /etc/letsencrypt:/certs
+    restart: always
+    network_mode: host
+
+volumes:
+  portainer_data:
+

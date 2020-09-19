@@ -114,6 +114,14 @@ nnoremap tj :tabprev<CR>
 nnoremap th :tabfirst<CR>
 nnoremap tl :tablast<CR>
 
+
+nnoremap <C-p> :FZF<CR>
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-s': 'split',
+  \ 'ctrl-v': 'vsplit'
+  \}
+
 set pyxversion=3 "sets pythonv version?
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => COC

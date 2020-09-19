@@ -1,0 +1,7 @@
+alias v="nvim"
+alias ww="v ~/vimwiki/index.md"
+alias python=python3
+alias pip="python3 -m pip"
+
+# PS1="--> ";
+# export PS1;

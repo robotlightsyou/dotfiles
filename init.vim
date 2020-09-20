@@ -1,5 +1,5 @@
 "WIP, don't judge
-"test edit
+"test edit number 2
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vim native settings

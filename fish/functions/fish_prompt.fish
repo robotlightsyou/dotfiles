@@ -20,9 +20,19 @@ function fish_prompt --description 'Write out the prompt'
         set color_host $fish_color_host_remote
     end
 
+    #change color of git branch if not in mater/primary
+#    https://stackoverflow.com/questions/17001757/string-inclusion-in-fish-shell
+    set -l git_label (fish_vcs_prompt)
+    set -l git_color f18fd1
+    set -l  master_color 00ff00
+    if string match -q -- '*master*' $git_label
+        set git_color $master_color
+    else if string match -q -- '*primary*' $git_label
+        set git_color $master_color
+    end
+
     # Write pipestatus
     set -l prompt_status (__fish_print_pipestatus " [" "]" "|" (set_color $fish_color_status) (set_color --bold $fish_color_status) $last_pipestatus)
 
-    # echo -n -s (set_color $fish_color_user) "$USER" $normal @ (set_color $color_host) (prompt_hostname) $normal ' ' (set_color $color_cwd) (prompt_pwd) $normal (fish_vcs_prompt) $normal $prompt_status (set_color red)'❯'(set_color yellow)'❯'(set_color green)'❯ '
-    echo -n -s (set_color cyan) "$USER" $normal @ (set_color magenta) (prompt_hostname) $normal ' ' (set_color $color_cwd) (prompt_pwd) $normal (fish_vcs_prompt) $normal $prompt_status " " (set_color cyan)'❯'(set_color magenta)'❯'(set_color normal)'❯ '
+    echo -n -s (set_color 00b8ff brcyan) "$USER" $normal (set_color 0000ff blue) @ (set_color ff00c1 brmagenta) (prompt_hostname) $normal ' ' (set_color 9600ff) (prompt_pwd) $normal (set_color $git_color) "$git_label" $normal $prompt_status " " (set_color cyan)'❯'(set_color magenta)'❯'(set_color normal)'❯ '
 end

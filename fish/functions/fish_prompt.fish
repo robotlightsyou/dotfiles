@@ -1,3 +1,5 @@
+#Color palettes
+#https://www.color-hex.com/color-palette/94267
 function fish_prompt --description 'Write out the prompt'
     set -l last_pipestatus $pipestatus
     set -l last_status $status
@@ -25,10 +27,10 @@ function fish_prompt --description 'Write out the prompt'
     set -l git_label (fish_vcs_prompt)
     set -l git_color f18fd1
     set -l  master_color 00ff00
-    if string match -q -- '*master*' $git_label
+    if string match -q -- '*master*' $git_label || string match -q -- '*primary*' $git_label
         set git_color $master_color
-    else if string match -q -- '*primary*' $git_label
-        set git_color $master_color
+    # else if string match -q -- '*primary*' $git_label
+    #     set git_color $master_color
     end
 
     # Write pipestatus

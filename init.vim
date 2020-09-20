@@ -196,6 +196,9 @@ nnoremap <Leader>h <C-w>h
 nnoremap <Leader>l <C-w>l
 nnoremap <C-n> :Ex<CR>
 
+nnoremap <C-b> :bnext<CR>
+nnoremap <Leader><C-q> :bd<CR>
+
 ""toggle relative numbers with leader + #
 "nnoremap <silent><expr> <leader>#
 "      \ ":set "

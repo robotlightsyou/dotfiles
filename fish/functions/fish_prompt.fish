@@ -29,8 +29,6 @@ function fish_prompt --description 'Write out the prompt'
     set -l  master_color 00ff00
     if string match -q -- '*master*' $git_label || string match -q -- '*primary*' $git_label
         set git_color $master_color
-    # else if string match -q -- '*primary*' $git_label
-    #     set git_color $master_color
     end
 
     # Write pipestatus

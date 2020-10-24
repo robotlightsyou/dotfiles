@@ -58,6 +58,7 @@ Plug 'tpope/vim-commentary'
 Plug 'ThePrimeagen/vim-be-good', {'do': './install.sh'}
 Plug 'puremourning/vimspector'
 Plug 'junegunn/vim-peekaboo'
+Plug 'mattn/emmet-vim'
 "Plug 'lyuts/vim-rtags'
 
 call plug#end()
@@ -217,3 +218,8 @@ let g:DevIconsEnableFoldersOpenClose = 1
 
 " Fix directory colors
 " highlight! link NERDTreeFlags NERDTreeDir
+"
+"
+"
+"vscode relative numbers not working
+"https://medium.com/@ersel_aker/mode-dependent-relative-line-numbers-in-vscodevim-eecfa558081

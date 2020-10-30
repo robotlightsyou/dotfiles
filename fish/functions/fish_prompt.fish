@@ -27,7 +27,7 @@ function fish_prompt --description 'Write out the prompt'
     set -l git_label (fish_vcs_prompt)
     set -l git_color f18fd1
     set -l  master_color 00ff00
-    if string match -q -- '*master*' $git_label || string match -q -- '*primary*' $git_label
+    if string match -q -- '*master*' $git_label || string match -q -- '*primary*' $git_label|| string match -q -- '*main*' $git_label 
         set git_color $master_color
     end
 

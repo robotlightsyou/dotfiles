@@ -1,3 +1,8 @@
+if exists('g:vscode')
+    " VSCode extension
+else
+    " ordinary neovim
+endif
 "WIP, don't judge
 "test edit number 2 again
 "
@@ -18,13 +23,15 @@ set smartindent
 set undodir=~/.vim/undodir "must add undodir
 set undofile
 set shiftwidth=4
-set rnu " shows active line number amid relative numbers
+" set rnu " shows active line number amid relative numbers
 set number relativenumber
 set nowrap
 set smartcase "affects searching
 set noswapfile
 set incsearch  "displays search results dynamically while typed"
 set nohlsearch "add no highlight to search
+set termguicolors
+
 
 "add fuzzy search :find *
 set path+=**
@@ -60,6 +67,7 @@ Plug 'puremourning/vimspector'
 Plug 'junegunn/vim-peekaboo'
 Plug 'mattn/emmet-vim'
 "Plug 'lyuts/vim-rtags'
+Plug 'unblevable/quick-scope'
 
 call plug#end()
 
@@ -223,3 +231,11 @@ let g:DevIconsEnableFoldersOpenClose = 1
 "
 "vscode relative numbers not working
 "https://medium.com/@ersel_aker/mode-dependent-relative-line-numbers-in-vscodevim-eecfa558081
+"
+:command Vbg VimBeGood
+"
+set mouse=a
+
+" let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+highlight QuickScopePrimary guifg='#5fffff'  gui=underline ctermfg=155 cterm=underline,bold
+highlight QuickScopeSecondary guifg='#afff5f' gui=underline ctermfg=81 cterm=underline,bold,italic

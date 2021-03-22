@@ -1,12 +1,30 @@
-# dotfiles
+# Top link
 
-A place to store configs for easier remote access
+Clicking top link will load at the top of the page
+-
+-
+-
+-
+filler-
+-
+# Middle
+Clicking middle will load further down on the page.
+*italics*
+**bold**
+~~strikethrough~~
 
+Unlike reddit, this will render with syntax highlighting
 ```python
 for item in my_object:
   print(item)
-what happens here
-
-what about here
 ```
-maybe this works
+
+-
+-
+-
+-
+-
+-
+-
+-
+## This will load the bottom of the page

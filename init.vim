@@ -44,6 +44,8 @@ set updatetime=50
 
 call plug#begin('~/.vim/plugged')
 
+" Plug 'neovim/nvim-lspconfig'
+" Plug 'kabouzeid/nvim-lspinstall'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}  "COC completion
 Plug 'jremmen/vim-ripgrep'                       "adds rg, turn off roor thing for ** :find?
 Plug 'vim-utils/vim-man'                         "vim man pages
@@ -239,3 +241,14 @@ set mouse=a
 " let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 highlight QuickScopePrimary guifg='#5fffff'  gui=underline ctermfg=155 cterm=underline,bold
 highlight QuickScopeSecondary guifg='#afff5f' gui=underline ctermfg=81 cterm=underline,bold,italic
+
+vmap > >gv
+vmap < <gv
+
+xnoremap K :move '<-2<CR>gv-gv
+xnoremap J :move '>+1<CR>gv-gv
+
+nnoremap <leader>k :bd<cr>  " kill current buffer
+nnoremap <leader>c :%bd<cr>  " kill all buffers
+nnoremap <C-k> :bprev<cr>  " previous buffer
+nnoremap <C-J> :bnext<cr>  " next buffer
